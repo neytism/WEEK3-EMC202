@@ -13,6 +13,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     
     private Image _image;
     [SerializeField] private TextMeshProUGUI _countText;
+    [SerializeField] private TextMeshProUGUI _itemNameText;
+    [SerializeField] private TextMeshProUGUI _itemDescText;
     [SerializeField] private Item _item;
     [SerializeField] GameObject menu;
 
@@ -22,6 +24,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void Awake()
     {
         _image = GetComponent<Image>();
+        _itemNameText = GameObject.Find("ItemName").GetComponent<TextMeshProUGUI>();
+        _itemDescText = GameObject.Find("ItemDesc").GetComponent<TextMeshProUGUI>();
         
     }
 
@@ -120,7 +124,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     
     void OnSingleClick()
     {
-        
+        _itemNameText.text = _item.ItemName;
+        _itemDescText.text = _item.ItemDescription;
     }
 
     void OnDoubleClick()
